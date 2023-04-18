@@ -1,0 +1,68 @@
+import sys
+import csv
+from qtpy import QtWidgets, QtGui
+
+from ui.mainwindow import Ui_MainWindow
+
+app = QtWidgets.QApplication(sys.argv)
+
+class MainWindow(QtWidgets.QMainWindow):
+    def __init__(self, parent = None):
+        super().__init__(parent)
+
+        self.setWindowTitle("Lizenzverwaltung")
+
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self)
+
+        self.readCsvFile("lizenzen.csv")
+        self.ui.newEntryButton.clicked.connect(self.onNewEntry)
+        self.ui.saveButton.clicked.connect(self.onSave)
+
+    def onSave(self):
+        with open('lizenzen.csv', 'w', newline='', encoding="utf-8") as file:
+            writer = csv.writer(file, delimiter=",", quotechar='"')
+
+            rows = self.ui.lizenzTable.rowCount()
+            for i in range(0, rows):
+                rowContent = [
+                    self.ui.lizenzTable.item(i, 0).text(),
+                    self.ui.lizenzTable.item(i, 1).text(),
+                    self.ui.lizenzTable.item(i, 2).text(),
+                    self.ui.lizenzTable.item(i, 3).text()
+                ]
+                writer.writerow(rowContent)
+
+    def onNewEntry(self):
+        row = self.ui.lizenzTable.rowCount()
+        self.ui.lizenzTable.insertRow(row)
+
+        self.ui.lizenzTable.setItem(row, 0, QtWidgets.QTableWidgetItem(""))
+        self.ui.lizenzTable.setItem(row, 1, QtWidgets.QTableWidgetItem(""))
+        self.ui.lizenzTable.setItem(row, 2, QtWidgets.QTableWidgetItem(""))
+        self.ui.lizenzTable.setItem(row, 3, QtWidgets.QTableWidgetItem(""))
+
+        cell = self.ui.lizenzTable.item(row, 0)
+        self.ui.lizenzTable.editItem(cell)
+
+    def readCsvFile(self, filename):
+        self.ui.lizenzTable.setRowCount(0)
+        with open(filename, "r", newline='', encoding="utf-8") as file:
+            reader = csv.reader(file, delimiter=',', quotechar='"')
+            for line in reader:
+                row = self.ui.lizenzTable.rowCount()
+                self.ui.lizenzTable.insertRow(row)
+
+                self.ui.lizenzTable.setItem(row, 0, QtWidgets.QTableWidgetItem(line[0]))
+                self.ui.lizenzTable.setItem(row, 1, QtWidgets.QTableWidgetItem(line[1]))
+                self.ui.lizenzTable.setItem(row, 2, QtWidgets.QTableWidgetItem(line[2]))
+                self.ui.lizenzTable.setItem(row, 3, QtWidgets.QTableWidgetItem(line[3]))
+
+
+
+
+window = MainWindow()
+
+window.show()
+
+sys.exit(app.exec_())
