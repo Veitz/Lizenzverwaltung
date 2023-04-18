@@ -1,4 +1,8 @@
 # Lizenzverwaltung
 small ui to manage licenses
 
-![plot](https://ibb.co/RTzS5gV)
+![Screenshot](https://ibb.co/RTzS5gV)
+
+![image description](https://ibb.co/RTzS5gV)
+OR
+<img src="https://ibb.co/RTzS5gV"/>
