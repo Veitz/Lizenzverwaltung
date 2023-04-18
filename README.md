@@ -1,2 +1,2 @@
 # Lizenzverwaltung
-little UI to manage licenses
+small ui to manage licenses
