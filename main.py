@@ -18,6 +18,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.readCsvFile("lizenzen.csv")
         self.ui.newEntryButton.clicked.connect(self.onNewEntry)
         self.ui.saveButton.clicked.connect(self.onSave)
+        self.ui.actionExit.triggered.connect(self.close)
 
     def onSave(self):
         with open('lizenzen.csv', 'w', newline='', encoding="utf-8") as file:
