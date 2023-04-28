@@ -1,6 +1,7 @@
 import sys
 import csv
-from qtpy import QtWidgets, QtGui
+# from qtpy import QtWidgets, QtGui
+from PyQt5 import QtWidgets, QtGui
 
 from ui.mainwindow import Ui_MainWindow
 
@@ -18,7 +19,14 @@ class MainWindow(QtWidgets.QMainWindow):
         self.readCsvFile("lizenzen.csv")
         self.ui.newEntryButton.clicked.connect(self.onNewEntry)
         self.ui.saveButton.clicked.connect(self.onSave)
+        self.ui.deleteButton.clicked.connect(self.onDelete)
         self.ui.actionExit.triggered.connect(self.close)
+
+
+    def onDelete(self):
+        if self.ui.lizenzTable.rowCount() > 0:
+            self.ui.lizenzTable.removeRow(self.ui.lizenzTable.rowCount()-1)
+
 
     def onSave(self):
         with open('lizenzen.csv', 'w', newline='', encoding="utf-8") as file:
