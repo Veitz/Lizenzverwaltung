@@ -106,10 +106,10 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.newEntryButton.setText(_translate("MainWindow", "Neuen Eintrag"))
-        self.saveButton.setText(_translate("MainWindow", "Speichern"))
-        self.deleteButton.setText(_translate("MainWindow", "Eintrag Löschen"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Lizenzverwaltung"))
+        self.newEntryButton.setText(_translate("MainWindow", "neuer Eintrag"))
+        self.saveButton.setText(_translate("MainWindow", "speichern"))
+        self.deleteButton.setText(_translate("MainWindow", "letzten Eintrag löschen"))
         self.lizenzTable.setWhatsThis(_translate("MainWindow", "<html><head/><body><p>Dies ist ein kleines Tool zum Verwalten von Lizenz-Keys</p></body></html>"))
         item = self.lizenzTable.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
