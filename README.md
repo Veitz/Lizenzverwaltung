@@ -8,3 +8,4 @@ The save button will create a CSV file with the content in the same directory.
 <!-- <img src="https://i.ibb.co/gZz7nrB/lizenzverwaltung.png"/> -->
 
 
+

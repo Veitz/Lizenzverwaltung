@@ -72,16 +72,16 @@ class MainWindow(QtWidgets.QMainWindow):
     def onInfo(self):
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Information)
-        msg.setWindowTitle("InfoBox")
-        msg.setText("Lizenzverwaltung - v0.1 \n "
+        msg.setWindowTitle("About Information")
+        msg.setText("Lizenzverwaltung - v1.0 \n "
                     " \n "
                     "Github: https://github.com/Veitz")
         #msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
-        #msg.exec_()  # this will show our messagebox
+        msg.exec_()  # this will show our messagebox
 
-        returnValue = msg.exec()
-        if returnValue == QMessageBox.Ok:
-            print('OK clicked')
+        #returnValue = msg.exec()
+        #if returnValue == QMessageBox.Ok:
+        #    print('OK clicked')
 
         # make a Hyperlink
         #linkTemplate = '<a href={0}>{1}</a>'
